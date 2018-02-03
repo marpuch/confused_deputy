@@ -5,13 +5,16 @@ import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ConfusedDeputyRunner implements CommandLineRunner {
 
+	@Autowired
+	private ConfusedDeputyLogic deputyLogic;
+	
 	@Override
 	public void run(String... args) throws Exception {
 		CommandLineParser parser = new DefaultParser();
@@ -24,12 +27,12 @@ public class ConfusedDeputyRunner implements CommandLineRunner {
 				printHelp(options);
 				System.exit(0);
 			} else if (cli.hasOption("i") && cli.hasOption("o")) {
-				
+				deputyLogic.run(cli.getOptionValue("i"), cli.getOptionValue("o"));
 			} else {
 				printHelp(options);
 				System.exit(0);
 			}
-		} catch (ParseException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println();
 			printHelp(options);

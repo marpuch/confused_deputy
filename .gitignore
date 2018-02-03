@@ -1,3 +1,6 @@
+confused_main/bill.txt
+confused_main/work/
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 

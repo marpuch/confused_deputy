@@ -1,0 +1,20 @@
+grant {
+	permission java.util.PropertyPermission "line.separator", "read";
+};
+
+grant codeBase "file:confused-0.0.1.jar" {
+	permission java.io.FilePermission "./work/-", "write";
+	permission java.io.FilePermission "./work", "read";
+	permission java.io.FilePermission "bill.txt", "read,write";
+	permission java.io.FilePermission "in.txt", "read";
+};
+
+grant codeBase "file:confused-bill-0.0.1.jar" {
+	permission java.io.FilePermission "bill.txt", "read,write";
+};
+
+grant codeBase "file:confused-work-0.0.1.jar" {
+	permission java.io.FilePermission "./work/-", "write";
+	permission java.io.FilePermission "./work", "read";
+	permission java.io.FilePermission "in.txt", "read";
+};

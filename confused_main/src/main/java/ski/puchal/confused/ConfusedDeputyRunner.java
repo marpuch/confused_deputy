@@ -5,18 +5,17 @@ import org.apache.commons.cli.CommandLineParser;
 import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Options;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
-@Component
-public class ConfusedDeputyRunner implements CommandLineRunner {
+public class ConfusedDeputyRunner {
 
-	@Autowired
-	private ConfusedDeputyLogic deputyLogic;
+	private ConfusedDeputyLogic deputyLogic = new ConfusedDeputyLogic();
 	
-	@Override
-	public void run(String... args) throws Exception {
+	public static void main(String[] args) {
+		ConfusedDeputyRunner runner = new ConfusedDeputyRunner();
+		runner.handleRequest(args);
+	}
+
+	private void handleRequest(String[] args) {
 		CommandLineParser parser = new DefaultParser();
 		
 		Options options = createCliOptions();
@@ -49,7 +48,7 @@ public class ConfusedDeputyRunner implements CommandLineRunner {
 	
 	private void printHelp(Options options) {
 		HelpFormatter formatter = new HelpFormatter();
-		formatter.printHelp("java -jar [jar] --in=[file] --out=[file]", options);
+		formatter.printHelp("ConfusedDeputyRunner --in=[file] --out=[file]", options);
 	}
 
 }

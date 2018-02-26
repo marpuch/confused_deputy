@@ -9,9 +9,6 @@ import java.io.IOException;
 import java.util.Base64;
 import java.util.Base64.Encoder;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class WorkLogic {
 
 	private static final String WORKING_DIR_STRING = "./work/";

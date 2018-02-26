@@ -6,9 +6,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class BillLogic {
 
 	private static final String BILL_FILE_STRING = "bill.txt";
